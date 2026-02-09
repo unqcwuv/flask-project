@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <title>{% block title %}Flask App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- header -->
+    <header class="site-header">
+        <nav class="nav">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </nav>
+    </header>
+
+    <!-- content -->
+    <main class="content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- footer -->
+    <footer class="site-footer">
+        <p>© {{ 2026 }} My Flask App</p>
+    </footer>
+
+</body>
+</html>

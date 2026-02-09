@@ -2,17 +2,18 @@ from flask import render_template, request, redirect, url_for
 from app import app
 
 @app.route('/')
-def form():
-    return render_template('form.html')
+def index():
+    return render_template('index.html')
 
-@app.route('/submit', methods=['POST', 'GET'])
-def submit():
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
     if request.method == 'POST':
         name = request.form.get('name')
-        color = request.form.get('color')
-        profession = request.form.get('profession')
-        hobbies = request.form.getlist('hobbies')
-        level = request.form.get('level')
-        return render_template('result.html', name=name, color=color, profession=profession, hobbies=hobbies, level=level)
-    else:
-        return redirect(url_for('form'))
+        email = request.form.get('email')
+        message = request.form.get('message')
+        return render_template('contact.html', success=True)
+    return render_template('contact.html', success=False)

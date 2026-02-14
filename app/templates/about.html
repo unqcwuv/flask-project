@@ -10,4 +10,11 @@
     <li>Vision: Empower people to build their ideas</li>
     <li>Values: Collaboration, innovation, and learning</li>
 </ol>
+
+<p>Our team</p>
+<ul>
+    {% for member in team_members %}
+        <li>{{ member.name }} - {{ member.role }}</li>
+    {% endfor %}
+</ul>
 {% endblock %}

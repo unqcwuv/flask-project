@@ -22,4 +22,9 @@
     <button type="submit" class="submit-button">Send</button>
 </form>
 
+<p>Contact Manager: {{ contact_manager.name }}</p>
+<p>City: {{ contact_manager.address.city }}</p>
+<p>Street: {{ contact_manager.address.street }}</p>
+<p>ZIP Code: {{ contact_manager.address.zip }}</p>
+
 {% endblock %}

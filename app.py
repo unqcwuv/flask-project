@@ -48,7 +48,7 @@ def add_agent():
         new_agent = Agent(
             nickname=nickname,
             contact_number=contact_number,
-            email= email,
+            email=email,
             access_level=access_level
         )
 
@@ -78,7 +78,7 @@ def agent_detail(id):
     return render_template('agent_detail.html', agent=agent)
 
 # 📌 Удаление агента
-@app.route('/delete/<int:id>')
+@app.route('/delete/<int:id>', methods=['POST'])
 def delete_agent(id):
     agent = Agent.query.get_or_404(id)
     db.session.delete(agent)
@@ -86,7 +86,7 @@ def delete_agent(id):
     return redirect(url_for('get_agents'))
 
 # 📌 Удаление всего
-@app.route('/secret_wipe')
+@app.route('/secret_wipe', methods=['POST'])
 def secret_wipe():
     Agent.query.delete()
     db.session.commit()

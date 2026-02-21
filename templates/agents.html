@@ -26,7 +26,9 @@
                     {{ agent.nickname }}
                     <div>
                         <a href="{{ url_for('edit_agent', id=agent.id) }}" class="btn btn-sm btn-warning">Edit</a>
-                        <a href="{{ url_for('delete_agent', id=agent.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                        <form action="{{ url_for('delete_agent', id=agent.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
                     </div>
                 </li>
                 {% endfor %}
@@ -38,7 +40,8 @@
         </div>
     </div>
 
-<a href="{{ url_for('secret_wipe') }}" class="btn btn-danger mt-3" onclick="return confirm('⚠️ This will delete ALL agents. Are you sure?')">SECRET MODE: WIPE DATABASE</a>
-
+<form action="{{ url_for('secret_wipe') }}" method="POST">
+    <button type="submit" class="btn btn-danger" onclick="return confirm('⚠️ Delete ALL agents?')">SECRET MODE: WIPE DATABASE</button>
+</form>
 </body>
 </html>
